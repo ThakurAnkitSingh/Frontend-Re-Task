@@ -39,6 +39,7 @@ const TaskList: React.FC = () => {
           status: statusFilter,
         },
       });
+      console.log(response?.data, 'response fetched successfully from tasklist');
       setTasks(response?.data);
     };
     fetchTasks();
@@ -57,7 +58,7 @@ const TaskList: React.FC = () => {
   const handleSubmit = async (task: Task) => {
     let url = "https://frontend-reuion-task.onrender.com/api/tasks";
     if (task?.id) {
-      url += `/${task.id}`;
+      url += `/${task?.id}`;
     }
     await axios.post(url, task, {
       headers: {
@@ -86,7 +87,7 @@ const TaskList: React.FC = () => {
       // Remove deleted tasks from the local state
       toast.success("Tasks deleted");
       setTasks((prevTasks: Task[]) =>
-        prevTasks.filter((task: Task) => task.id && !selectedTaskIds.includes(task?.id))
+        prevTasks.filter((task: Task) => task?.id && !selectedTaskIds.includes(task?.id))
       );
       setSelectedTasks(new Set()); // Reset the selected tasks
     } catch (error) {
