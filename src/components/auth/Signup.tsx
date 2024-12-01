@@ -31,7 +31,7 @@ const Signup: React.FC = () => {
         toast.error("Password cannot contain spaces");
         return;
       }
-      await axios.post("http://localhost:5000/api/auth/signup", { email, password });
+      await axios.post("https://frontend-reuion-task.onrender.com/api/auth/signup", { email, password });
       toast.success("Signup successful");
       navigate("/login");
     } catch (err) {

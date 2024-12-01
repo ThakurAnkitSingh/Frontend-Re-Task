@@ -30,7 +30,7 @@ const Dashboard: React.FC = () => {
     const fetchStats = async () => {
       const token = localStorage.getItem("token");
       try {
-        const response = await axios.get("http://localhost:5000/api/tasks/dashboard/statistics", {
+        const response = await axios.get("https://frontend-reuion-task.onrender.com/api/tasks/dashboard/statistics", {
           headers: { Authorization: `Bearer ${token}` },
         });
         setStats(response.data);

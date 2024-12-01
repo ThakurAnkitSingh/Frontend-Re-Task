@@ -15,7 +15,7 @@ const Login: React.FC = () => {
   const handleLogin = async () => {
     setLoading(true);
     try {
-      const response = await axios.post("http://localhost:5000/api/auth/login", { email, password });
+      const response = await axios.post("https://frontend-reuion-task.onrender.com/api/auth/login", { email, password });
       localStorage.setItem("token", response?.data?.token);
       toast.success("Login successful");
       navigate("/home");

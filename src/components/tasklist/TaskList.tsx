@@ -29,7 +29,7 @@ const TaskList: React.FC = () => {
   useEffect(() => {
     // Fetch tasks from server with filters and sorting
     const fetchTasks = async () => {
-      const response = await axios.get("http://localhost:5000/api/tasks/", {
+      const response = await axios.get("https://frontend-reuion-task.onrender.com/api/tasks/", {
         headers: {
           authorization: `Bearer ${localStorage.getItem("token")}`,
         },
@@ -55,7 +55,7 @@ const TaskList: React.FC = () => {
   };
 
   const handleSubmit = async (task: Task) => {
-    let url = "http://localhost:5000/api/tasks";
+    let url = "https://frontend-reuion-task.onrender.com/api/tasks";
     if (task?.id) {
       url += `/${task.id}`;
     }
@@ -76,7 +76,7 @@ const TaskList: React.FC = () => {
     }
 
     try {
-      await axios.delete("http://localhost:5000/api/tasks/delete", {
+      await axios.delete("https://frontend-reuion-task.onrender.com/api/tasks/delete", {
         headers: {
           authorization: `Bearer ${localStorage.getItem("token")}`,
         },
