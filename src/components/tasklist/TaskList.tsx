@@ -39,7 +39,6 @@ const TaskList: React.FC = () => {
           status: statusFilter,
         },
       });
-      console.log(response?.data, 'response fetched successfully from tasklist');
       setTasks(response?.data);
     };
     fetchTasks();

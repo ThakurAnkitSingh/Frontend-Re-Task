@@ -33,8 +33,7 @@ const Dashboard: React.FC = () => {
         const response = await axios.get("https://frontend-reuion-task.onrender.com/api/tasks/dashboard/statistics", {
           headers: { Authorization: `Bearer ${token}` },
         });
-        console.log(response?.data, 'response fetched successfully');
-        setStats(response.data);
+        setStats(response?.data);
       } catch (err) {
         console.error("Failed to fetch statistics:", err);
         setError("Unable to load dashboard statistics. Please try again later.");
