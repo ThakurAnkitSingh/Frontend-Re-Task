@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from "@/components/ui/table";
 import axios from "axios";
+import api from "@/helper/api";
 
 interface PriorityStat {
   priority: number;
@@ -30,7 +31,7 @@ const Dashboard: React.FC = () => {
     const fetchStats = async () => {
       const token = localStorage.getItem("token");
       try {
-        const response = await axios.get("https://frontend-reuion-task.onrender.com/api/tasks/dashboard/statistics", {
+        const response = await axios.get(`${api}/tasks/dashboard/statistics`, {
           headers: { Authorization: `Bearer ${token}` },
         });
         setStats(response?.data);

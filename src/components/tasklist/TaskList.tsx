@@ -14,6 +14,7 @@ import {
 import axios from "axios";
 import { toast } from "react-toastify";
 import { Task } from "@/types/task";
+import api from "@/helper/api";
 
 const TaskList: React.FC = () => {
   const [isTaskFormOpen, setIsTaskFormOpen] = useState(false);
@@ -29,7 +30,7 @@ const TaskList: React.FC = () => {
   useEffect(() => {
     // Fetch tasks from server with filters and sorting
     const fetchTasks = async () => {
-      const response = await axios.get("https://frontend-reuion-task.onrender.com/api/tasks/", {
+      const response = await axios.get(`${api}/tasks/`, {
         headers: {
           authorization: `Bearer ${localStorage.getItem("token")}`,
         },
@@ -55,7 +56,7 @@ const TaskList: React.FC = () => {
   };
 
   const handleSubmit = async (task: Task) => {
-    let url = "https://frontend-reuion-task.onrender.com/api/tasks";
+    let url = `${api}/tasks`;
     if (task?.id) {
       url += `/${task?.id}`;
     }
@@ -76,7 +77,7 @@ const TaskList: React.FC = () => {
     }
 
     try {
-      await axios.delete("https://frontend-reuion-task.onrender.com/api/tasks/delete", {
+      await axios.delete(`${api}/tasks/delete`, {
         headers: {
           authorization: `Bearer ${localStorage.getItem("token")}`,
         },

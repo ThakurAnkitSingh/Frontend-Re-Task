@@ -63,8 +63,8 @@ const TaskTable: React.FC<{
           <TableRow key={task?.id} className="hover:bg-gray-100">
             <TableCell className="p-2 text-center">
               <Checkbox
-                checked={task.id ? selectedTasks.has(task.id) : false}
-                onClick={() => task.id && handleCheckboxChange(task.id)}
+                checked={task?.id ? selectedTasks.has(task?.id) : false}
+                onClick={() => task?.id && handleCheckboxChange(task?.id)}
               />
             </TableCell>
             <TableCell className="p-2 text-center">{task.id}</TableCell>
